@@ -1,0 +1,32 @@
+.booking-Container h1{
+    margin: 10px;
+}
+
+.booking-Container{
+    min-height: 90vh;
+}
+
+.btn-group button{
+    border: 1px solid rgb(201, 201, 201);
+    width: 150px;
+}
+
+.col-sm-2 {
+    text-align: center;
+}
+
+.col-sm-2 div{
+    text-align: center;
+    /* border: solid 1px black; */
+    padding: 10px;
+    margin-bottom: 5px;
+    /* background-color: rgb(201, 201, 201); */
+}
+
+.col-sm-12{
+    text-align: center;
+}
+
+.page-item{
+    color: black;
+}

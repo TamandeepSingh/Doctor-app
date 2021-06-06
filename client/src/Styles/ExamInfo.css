@@ -1,0 +1,26 @@
+.banner-canadaExamInfo {
+    height: 92vh;
+    background-image: url(../Assets/canada-flag.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+  }
+
+.banner-canadaExamInfo > h1{
+    padding: 50px;
+    /* color: rgb(255, 255, 255); */
+}
+
+.banner-canadaExamInfo > p{
+    font-size:large;
+    /* color: rgb(255, 255, 255); */
+    font-weight: bold;
+}
+
+.banner-canadaExamInfo button{
+    margin: 100px;
+    width: 250px;
+    height: 50px;
+    border-radius: 5px;
+}
