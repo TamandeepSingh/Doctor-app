@@ -1,7 +1,13 @@
-# Express Starter
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Doctor's appointment App
 
-This starter repo will be used for building applications using React, Material-UI, React-Router, Node, & Express.js.
+## Available Scripts
 
-## Getting started
+In the project directory, you can run client:
 
-The project is broken down into a client and server folder.
+### `npm start`
+
+
+In the project directory, you can run server:
+
+### `npm run dev`
