@@ -1,0 +1,8 @@
+#wrapper{
+    min-height: 88vh;
+}
+
+#sidebar-wrapper{
+    border-right: rgb(163, 163, 163) 1px solid;
+    
+}

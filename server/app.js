@@ -3,9 +3,21 @@ const express = require("express");
 const { join } = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+const dotEnv = require("dotenv");
+const jwt = require('jsonwebtoken');
+
+dotEnv.config({ path: './.env' });
+
+const mysql = require("mysql");
+const db = mysql.createConnection({
+  host: process.env.HOSTNAME,
+  user: process.env.USER_NAME,
+  password: process.env.PASSWORD,
+  database: process.env.DATABASE
+})
 
 const indexRouter = require("./routes/index");
-const pingRouter = require("./routes/ping");
+const authRouter = require("./routes/auth");
 
 const { json, urlencoded } = express;
 
@@ -18,7 +30,7 @@ app.use(cookieParser());
 app.use(express.static(join(__dirname, "public")));
 
 app.use("/", indexRouter);
-app.use("/ping", pingRouter);
+app.use("/auth", authRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -35,5 +47,15 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.json({ error: err });
 });
+
+
+db.connect( (error) => {
+  if(error){
+    console.log("DB not connet", error)
+  }else{
+    console.log("MySql connected")
+  }
+})
+
 
 module.exports = app;

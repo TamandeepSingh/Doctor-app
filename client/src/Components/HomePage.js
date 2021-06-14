@@ -10,15 +10,6 @@ import { useHistory } from "react-router-dom";
 
 function HomePage() {
 
-    const canadaExam = () => {
-        console.log("haaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-        return(
-            <div>
-                {/* <Link to="/canadaExamInfo"></Link> */}
-            </div>
-        );
-    }
-
     const history = useHistory();
 
     return (

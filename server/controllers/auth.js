@@ -1,6 +1,7 @@
 const mysql = require("mysql");
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const {promisify}= require('util');
 
 const db = mysql.createConnection({
   host: process.env.HOSTNAME,
@@ -49,7 +50,6 @@ exports.register = (req, res) =>{
 
     });
 
-    // res.send("form submitted");
 }
 
 
@@ -76,9 +76,69 @@ exports.login = (req, res) =>{
             const id = result[0].Patient_Id;
             console.log(id);
 
+            const token = jwt.sign({ id }, process.env.JWT_SECRET, {
+                expiresIn: process.env.JWT_EXPIRES_IN
+            } )
+            
+            console.log("token : ", token);
+
+            const cookieOptions = {
+                expires : new Date(
+                    Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000 // cookiw time converted in milli seconds
+                ),
+                httpOnly: true
+            }
+
+            res.cookie('jwt', token, cookieOptions);
+            res.status(200).redirect("/");
         }
 
 
 
     })
+}
+
+exports.isLoggedIn = async (req, res) => {
+    // console.log("herererer", req);
+    console.log("cookies :", req.cookies);
+
+    // if else, check the cookies and decode the cookies, if true, then send success result. else not logged in .
+
+    if(req.cookies.jwt){
+        try{
+            const decoded = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRET);
+            console.log("decoded : ",decoded);
+            db.query('SELECT * from Patient WHERE Patient_Id = ?', [decoded.id], async (error, result) =>{
+                if(error){
+                    console.log("error in query :" , error);
+                }
+
+                if(result){
+                    console.log(result);
+                    res.status(200).send({
+                        loginMessage: "Welcome, user logged in"
+                    });
+                }
+            });
+
+        }catch(error){
+            console.log("err in catch : ",error)
+        }
+    }
+    
+}
+
+
+exports.logOut = async (req, res) => {
+
+    const cookieOptions = {
+        expires : new Date(
+            Date.now() +  1 * 1000// cookiw time converted in milli seconds
+        ),
+        httpOnly: true
+    }
+
+    res.cookie('jwt', 'logout', cookieOptions);
+    res.status(200).redirect("/");
+
 }

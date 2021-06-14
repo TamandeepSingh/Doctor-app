@@ -8,7 +8,40 @@ import '../Styles/Header.css'
 
 function Header() {
     return (
-      <div className="background" >
+    <div className="background" >
+
+        <div id="myModal" class="modal fade">
+            <div class="modal-dialog modal-login">
+                <div class="modal-content">
+                    {/* <form action="/examples/actions/confirmation.php" method="post">
+                        <div class="modal-header">				
+                            <h4 class="modal-title">Login</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        </div>
+                        <div class="modal-body">				
+                            <div class="form-group">
+                                <label>Username</label>
+                                <input type="text" class="form-control" required="required">
+                            </div>
+                            <div class="form-group">
+                                <div class="clearfix">
+                                    <label>Password</label>
+                                    <a href="#" class="float-right text-muted"><small>Forgot?</small></a>
+                                </div>
+                                
+                                <input type="password" class="form-control" required="required">
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <label class="form-check-label"><input type="checkbox"> Remember me</label>
+                            <input type="submit" class="btn btn-primary" value="Login">
+                        </div>
+                    </form> */}
+                </div>
+            </div>
+        </div>     
+
+
         <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
         {/* <!-- Brand --> */}
         {/* <a className="navbar-brand" href="#">Logo</a> */}
@@ -31,6 +64,8 @@ function Header() {
                 <a className="nav-link" href="#">Login</a>
             </li>
         </ul> */}
+
+
         
         <Router>
             <main>
@@ -50,7 +85,7 @@ function Header() {
         </Router>
 
         </nav>
-      </div>
+    </div>
     );
   }
 

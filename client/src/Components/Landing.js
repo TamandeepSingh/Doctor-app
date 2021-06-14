@@ -14,20 +14,19 @@ class LandingPage extends Component {
   };
 
   componentDidMount() {
-    fetch("/welcome")
-      .then(res => {
-        console.log("first res :",res);
-        if (res.status === 200) return res.json();
-        else throw Error("Couldn't connect to the server");
-      })
-      .then(res => {
-        console.log("res : ", res)
-        this.setState({ welcomeMessage: res.welcomeMessage });
-        this.incrementStep();
-      })
-      .catch(err => {
-        console.log(err.message);
-      });
+    // fetch("/welcome")
+    //   .then(res => {
+    //     console.log("first res :",res);
+    //     if (res.status === 200) return res.json();
+    //     else throw Error("Couldn't connect to the server");
+    //   })
+    //   .then(res => {
+    //     console.log("res : ", res)
+    //     this.setState({ welcomeMessage: res.welcomeMessage });
+    //   })
+    //   .catch(err => {
+    //     console.log(err.message);
+    //   });
   }
 
   render() {
